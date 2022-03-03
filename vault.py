@@ -34,7 +34,6 @@ def encryptFolder(full_path):
             zf.setpassword(password)
             zf.setencryption(pyzipper.WZ_AES, nbits=256)
             for root, folders, files in contents:
-                # Include all subfolders, including empty ones.
                 for folder_name in folders:
                     absolute_path = os.path.join(root, folder_name)
                     relative_path = absolute_path.replace(root_path + '/', '')
@@ -69,4 +68,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-    
