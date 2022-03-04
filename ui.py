@@ -3,6 +3,8 @@ from msilib.schema import Icon
 import wx
 
 class Encryptor(wx.Panel):
+    path = ''
+
     def __init__(self, parent):
         super().__init__(parent)
 
@@ -20,6 +22,7 @@ class Encryptor(wx.Panel):
         hBox2.Add(btCopyToClipboard, 0, wx.ALL, 5)
 
         selectFolder = wx.Button(self, label='Select Folder to Encrypt')
+        selectFolder.Bind(wx.EVT_BUTTON, self.on_open)
         hBox1.Add(selectFolder, 0, wx.ALL, 5)
 
         encrypt = wx.Button(self, label='Encrypt')
@@ -30,9 +33,12 @@ class Encryptor(wx.Panel):
 
         self.SetSizer(vBox)
         vBox.Fit(parent)
-        hBox1.Fit(parent)
-        hBox2.Fit(parent)
         self.Layout()
+
+    def on_open(self, event):
+        with wx.DirDialog(None, 'Choose a folder', '', wx.DD_DEFAULT_STYLE | wx.DD_DIR_MUST_EXIST) as dialog:
+            if dialog.ShowModal() == wx.ID_OK:
+                self.path.SetValue(dialog.GetPath())
 
 class MainWindow(wx.Frame):
     def __init__(self):
