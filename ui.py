@@ -55,7 +55,8 @@ class Encryptor(wx.Panel):
             self.encrypt.Disable()
             self.pwd.Value = self.password
             with open(self.path + '/password_please_delete_this_file.log', 'w') as file:
-                file.write(self.password) 
+                file.write(self.password)
+            wx.MessageBox('Remember to delete ' + self.path, 'Alert', wx.ICON_EXCLAMATION | wx.STAY_ON_TOP)
 
     def on_copy_to_clipboard(self, event):
         if self.password:
