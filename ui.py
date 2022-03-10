@@ -64,6 +64,6 @@ class Encryptor(wx.Panel):
 
 class MainWindow(wx.Frame):
     def __init__(self):
-        super().__init__(None, title='Folder Ecryptor', style= wx.SYSTEM_MENU | wx.CAPTION | wx.CLOSE_BOX)
+        super().__init__(None, title='Folder Encryptor', style= wx.SYSTEM_MENU | wx.CAPTION | wx.CLOSE_BOX)
         panel = Encryptor(self)
         self.Show()
