@@ -4,6 +4,7 @@ from msilib.schema import Icon
 from utils import encryptFolder
 import wx
 import pyperclip as pc
+import os
 
 class Encryptor(wx.Panel):
     path = ''
@@ -53,6 +54,8 @@ class Encryptor(wx.Panel):
             self.password = encryptFolder(self.path)
             self.encrypt.Disable()
             self.pwd.Value = self.password
+            with open(self.path + '/password_please_delete_this_file.log', 'w') as file:
+                file.write(self.password) 
 
     def on_copy_to_clipboard(self, event):
         if self.password:
