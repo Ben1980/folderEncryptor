@@ -6,7 +6,7 @@ import random
 import string
 
 def generatePassword():
-    length = 25                      
+    length = 45                      
 
     lower = string.ascii_lowercase
     upper = string.ascii_uppercase
