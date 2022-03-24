@@ -4,7 +4,6 @@ from msilib.schema import Icon
 from utils import encryptFolder
 import wx
 import pyperclip as pc
-import os
 
 class Encryptor(wx.Panel):
     path = ''
