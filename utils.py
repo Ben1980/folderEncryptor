@@ -25,10 +25,17 @@ def encryptFolder(full_path):
     contents = os.walk(full_path)
 
     password = generatePassword()
+    root_path = root_path.rstrip('\\')
+    print(root_path)
     zip_name = full_path.replace(root_path + '\\', '')
+    print(full_path)
+    print(zip_name)
     zip_name = root_path + '\\' + zip_name + '.zip'
-
     
+
+    #print(full_path)
+    #print(root_path)
+    #print(zip_name)
 
     try:
         with pyzipper.AESZipFile(zip_name, 'w', compression=pyzipper.ZIP_LZMA) as zf:
