@@ -28,6 +28,8 @@ def encryptFolder(full_path):
     zip_name = full_path.replace(root_path + '\\', '')
     zip_name = root_path + '\\' + zip_name + '.zip'
 
+    
+
     try:
         with pyzipper.AESZipFile(zip_name, 'w', compression=pyzipper.ZIP_LZMA) as zf:
             zf.setpassword(password)
@@ -35,11 +37,11 @@ def encryptFolder(full_path):
             for root, folders, files in contents:
                 for folder_name in folders:
                     absolute_path = os.path.join(root, folder_name)
-                    relative_path = absolute_path.replace(root_path + '/', '')
+                    relative_path = absolute_path.replace(root_path + '\\', '')
                     zf.write(absolute_path, relative_path)
                 for file_name in files:
                     absolute_path = os.path.join(root, file_name)
-                    relative_path = absolute_path.replace(root_path + '/','')
+                    relative_path = absolute_path.replace(root_path + '\\','')
                     zf.write(absolute_path, relative_path)
 
     except IOError as message:
